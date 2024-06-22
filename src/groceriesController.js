@@ -18,4 +18,9 @@ function index(groceries) {
   return groceries.map((grocery) => grocery.id + " " + grocery.name).join("\n");
 }
 
-module.exports = { create, index };
+function show(groceries, groceryId) {
+  const grocery = groceries.find((grocery) => grocery.id === groceryId);
+  return grocery.id + " " + grocery.name + " $" + grocery.priceInCents/100;
+}
+
+module.exports = { create, index, show };

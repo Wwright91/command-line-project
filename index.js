@@ -1,5 +1,5 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
-const { create, index } = require("./src/groceriesController");
+const { create, index, show } = require("./src/groceriesController");
 
 const inform = console.log;
 
@@ -20,7 +20,7 @@ function run() {
       writeToFile = true;
       break;
     case "show":
-      inform(action, grocery);
+      inform(show(groceryProducts, grocery));
       break;
     case "update":
       inform(action, grocery);
