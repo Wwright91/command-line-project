@@ -6,7 +6,7 @@ function create(groceries, groceryDetails) {
   const grocery = {
     name: name,
     id: nanoid(4),
-    priceInCents: priceInCents,
+    priceInCents: +priceInCents,
     inStock: true,
     isOrganic: false,
   };
@@ -36,4 +36,16 @@ function destroy(groceries, groceryId) {
   return groceries;
 }
 
-module.exports = { create, index, show, destroy };
+function edit(groceries, grocerylId, organic) {
+  const index = groceries.findIndex((grocery) => grocery.id === grocerylId);
+  if (index > -1) {
+    groceries[index].isOrganic = JSON.parse(organic);
+    inform("grocery successfully updated");
+    return groceries;
+  } else {
+    inform("grocery not found. No action taken");
+    return groceries;
+  }
+}
+
+module.exports = { create, index, show, destroy, edit };
