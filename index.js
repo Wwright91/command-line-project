@@ -1,14 +1,23 @@
+const { readJSONFile, writeJSONFile } = require("./src/helpers");
+const { create } = require("./src/groceriesController");
+
 const inform = console.log;
 
 function run() {
   const action = process.argv[2];
   const grocery = process.argv[3];
+  let groceryProducts = readJSONFile("./data", "groceries.json");
+  let writeToFile = false;
+  let updatedGroceryList = [];
+
   switch (action) {
     case "index":
       inform(action);
       break;
     case "create":
-      inform(action, grocery);
+      updatedGroceryList = create(groceryProducts, process.argv.slice(3));
+      inform("Item created");
+      writeToFile = true;
       break;
     case "show":
       inform(action, grocery);
@@ -21,6 +30,9 @@ function run() {
       break;
     default:
       inform("There was an error.");
+  }
+  if (writeToFile) {
+    writeJSONFile("./data", "groceries.json", updatedGroceryList);
   }
 }
 run();
