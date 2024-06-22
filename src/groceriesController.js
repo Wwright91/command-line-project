@@ -14,4 +14,8 @@ function create(groceries, groceryDetails) {
   return groceries;
 }
 
-module.exports = { create };
+function index(groceries) {
+  return groceries.map((grocery) => grocery.id + " " + grocery.name).join("\n");
+}
+
+module.exports = { create, index };
