@@ -1,13 +1,6 @@
 [
   {
     "name": "chips",
-    "id": "VxnD",
-    "priceInCents": "300",
-    "inStock": true,
-    "isOrganic": false
-  },
-  {
-    "name": "chips",
     "id": "hNXJ",
     "priceInCents": "300",
     "inStock": true,

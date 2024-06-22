@@ -1,5 +1,5 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
-const { create, index, show } = require("./src/groceriesController");
+const { create, index, show, destroy } = require("./src/groceriesController");
 
 const inform = console.log;
 
@@ -26,7 +26,8 @@ function run() {
       inform(action, grocery);
       break;
     case "destroy":
-      inform(action, grocery);
+      updatedGroceryList = destroy(groceryProducts, grocery);
+      writeToFile = true;
       break;
     default:
       inform("There was an error.");

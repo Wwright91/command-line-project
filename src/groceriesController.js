@@ -23,4 +23,17 @@ function show(groceries, groceryId) {
   return grocery.id + " " + grocery.name + " $" + grocery.priceInCents/100;
 }
 
-module.exports = { create, index, show };
+const inform = console.log;
+
+function destroy(groceries, groceryId) {
+  const index = groceries.findIndex((grocery) => grocery.id === groceryId);
+  if (index > -1) {
+    groceries.splice(index, 1);
+    inform("grocery successfully removed from collection");
+  } else {
+    inform("grocery not found. No action taken");
+  }
+  return groceries;
+}
+
+module.exports = { create, index, show, destroy };
